@@ -16,12 +16,16 @@ user_guess = 0
 print(logo)
 print("Welcome to the Number Guessing Game!")
 print("I'm thinking of a number between 1 and 100.")
-level = input("Choose a difficulty. Type 'easy' or 'hard': ").lower()
 
-if level == "easy":
-    attempts_remaining = 10
-else:
-    attempts_remaining = 5
+
+def choose_level(level):
+    if level == "easy":
+        attempts_remaining = 10
+    else:
+        attempts_remaining = 5
+    return attempts_remaining
+
+attempts_remaining = choose_level(input("Choose a difficulty. Type 'easy' or 'hard': ").lower())
 
 def check_guess(guess):
     if user_guess == MAGIC_NUMBER:
