@@ -1,13 +1,3 @@
-# "Welcome to the Number Guessing Game!"
-# "I'm thinking of a number between 1 and 100."
-# "Choose a difficulty. Type 'easy' or 'hard': "
-# "You have {attempts_remaing} attempts remaining to guess the number"
-# "Make a guess: "
-# "Too High"
-# "Guess Again"
-# "You got it! The answer was {MAGIC_NUMBER}"
-# "You've run out of guesses. You lose!"
-
 from art import logo
 import random
 MAGIC_NUMBER = random.randint(1, 100)
@@ -16,17 +6,11 @@ user_guess = 0
 print(logo)
 print("Welcome to the Number Guessing Game!")
 print("I'm thinking of a number between 1 and 100.")
-
-
-def choose_level(level):
-    if level == "easy":
-        attempts_remaining = 10
-    else:
-        attempts_remaining = 5
-    return attempts_remaining
-
-attempts_remaining = choose_level(input("Choose a difficulty. Type 'easy' or 'hard': ").lower())
-
+level = input("Choose a difficulty. Type 'easy' or 'hard': ").lower()
+if level == "easy":
+    attempts_remaining = 10
+else:
+    attempts_remaining = 5
 def check_guess(guess):
     if user_guess == MAGIC_NUMBER:
         return f"You got it! The answer was {MAGIC_NUMBER}"
@@ -34,7 +18,6 @@ def check_guess(guess):
         return"Too High"
     elif user_guess < MAGIC_NUMBER:
         return  "Too low"
-
 while user_guess != MAGIC_NUMBER and is_game_over == False:
     print(f"You have {attempts_remaining} attempts remaining to guess the number")
     attempts_remaining -= 1
